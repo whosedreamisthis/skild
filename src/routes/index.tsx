@@ -1,11 +1,56 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Terminal } from "lucide-react";
+import { skills } from "@/lib/dummy-skills.ts";
+import SkillCard from "#/components/SkillCard.tsx";
 
-export const Route = createFileRoute('/')({ component: App });
+export const Route = createFileRoute("/")({ component: App });
 
 function App() {
-	return (
-		<main>
-			<h1>Hello from tanstack start </h1>
-		</main>
-	);
+  return (
+    <main id="home">
+      <section className="hero">
+        <div className="copy">
+          <h1>
+            The Registry for <br />
+            <span className="text-gradient">Agentic Intelligence</span>
+          </h1>
+          <p>
+            A high-performance registry for procedural agent skills. Discover,
+            publish, and operate reusable agent capabilities from a route-driven
+            workspace.
+          </p>
+        </div>
+        <div className="actions">
+          <Link to="/skills" className="btn-primary">
+            <Terminal size={18} />
+            <span>Browse Registry</span>
+          </Link>
+          <Link to="/skills/new" className="btn-secondary">
+            <span>Publish Skill</span>
+          </Link>
+        </div>
+      </section>
+      <section className="latest">
+        <div className="space-y-2">
+          <h2>
+            Recently Created <span className="text-gradient">Skills</span>
+          </h2>
+          <p>
+            Latest skills loaded from Firestore in decsending creation order.
+          </p>
+        </div>
+        <div>
+          {skills.length > 0 ? (
+            <div className="skills-grid">
+              {skills.map((skill) => (
+                <SkillCard key={skill.id} {...skill} />
+              ))}
+            </div>
+          ) : (
+            <p>No skills have been created yet.</p>
+          )}
+        </div>
+      </section>
+    </main>
+  );
 }

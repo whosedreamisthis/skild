@@ -1,0 +1,67 @@
+export const skills: SkillRecord[] = [
+  {
+    id: "sk_01J8W2X",
+    title: "TanStack Query Essentials",
+    slug: "tanstack-query-essentials",
+    description:
+      "Master asynchronous state management, caching, and data fetching strategies.",
+    category: "Development",
+    tags: ["react", "typescript", "tanstack", "query"],
+    installCommand: "npm i @tanstack/react-query",
+    createdAt: "2024-03-15T10:30:00Z",
+    authorClerkId: "user_2aB3c4D",
+    authorEmail: "dev@example.com",
+  },
+  {
+    id: "sk_02K9X3Y",
+    title: "Tailwind CSS Styling",
+    slug: "tailwind-css-styling",
+    description:
+      "Rapidly build modern user interfaces with utility-first CSS classes.",
+    category: "Design",
+    tags: ["css", "ui", "tailwind", "frontend"],
+    installCommand: "npm install -D tailwindcss postcss autoprefixer",
+    createdAt: "2024-03-16T14:20:00Z",
+    authorClerkId: "user_9zY8x7W",
+    authorEmail: "designer@example.com",
+  },
+  {
+    id: "sk_03L0Z4P",
+    title: "Drizzle ORM Setup",
+    slug: "drizzle-orm-setup",
+    description:
+      "Type-safe database interactions with a lightweight and performant ORM.",
+    category: "Backend",
+    tags: ["database", "typescript", "orm", "sql"],
+    installCommand: "npm i drizzle-orm pg",
+    createdAt: "2024-03-17T09:00:00Z",
+    authorClerkId: null,
+    authorEmail: null,
+  },
+  {
+    id: "sk_04M1A5Q",
+    title: "Framer Motion Animations",
+    slug: "framer-motion-animations",
+    description:
+      "Create fluid, production-ready animations and gestures for React applications.",
+    category: "Design",
+    tags: ["animation", "react", "framer-motion", "ux"],
+    installCommand: "npm i framer-motion",
+    createdAt: "2024-03-18T16:45:00Z",
+    authorClerkId: "user_5kL6m7N",
+    authorEmail: "creative@example.com",
+  },
+  {
+    id: "sk_05N2B6R",
+    title: "Zustand State Management",
+    slug: "zustand-state-management",
+    description:
+      "A small, fast and scalable bearbones state-management solution.",
+    category: "Development",
+    tags: ["react", "state", "zustand", "frontend"],
+    installCommand: "npm i zustand",
+    createdAt: "2024-03-19T11:15:00Z",
+    authorClerkId: "user_1qW2e3R",
+    authorEmail: "lead-dev@example.com",
+  },
+];

@@ -4,6 +4,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { ClerkProvider } from '@clerk/tanstack-react-start';
 import Navbar from '#/components/Navbar';
 import appCss from '../styles.css?url';
+import { Crosshair } from 'lucide-react';
 
 const THEME_INIT_SCRIPT = `(function(){try{var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;}catch(e){}})();`;
 
@@ -41,32 +42,34 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 				<HeadContent />
 			</head>
 			<body className="font-sans antialiased [overflow-wrap:anywhere] selection:bg-[rgba(79,184,178,0.24)]">
-				{/* <ClerkProvider> */}
-				<div id="root-layout">
-					<header>
-						<div className="frame">
-							<Navbar />
-						</div>
-					</header>
-					<main>
-						<div className="frame">{children}</div>
-					</main>
-				</div>
+				<ClerkProvider>
+					<div id="root-layout">
+						<header>
+							<div className="frame">
+								<Navbar />
+								{/* <Crosshair />
+								<Crosshair /> */}
+							</div>
+						</header>
+						<main>
+							<div className="frame">{children}</div>
+						</main>
+					</div>
 
-				<TanStackDevtools
-					config={{
-						defaultOpen: false,
-						position: 'top-right',
-					}}
-					plugins={[
-						{
-							name: 'Tanstack Router',
-							render: <TanStackRouterDevtoolsPanel />,
-						},
-					]}
-				/>
-				<Scripts />
-				{/* </ClerkProvider> */}
+					<TanStackDevtools
+						config={{
+							defaultOpen: false,
+							position: 'top-right',
+						}}
+						plugins={[
+							{
+								name: 'Tanstack Router',
+								render: <TanStackRouterDevtoolsPanel />,
+							},
+						]}
+					/>
+					<Scripts />
+				</ClerkProvider>
 			</body>
 		</html>
 	);

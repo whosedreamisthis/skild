@@ -1,6 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check, Copy } from "lucide-react";
+import {
+  ArrowBigUp,
+  ArrowUpRight,
+  Bookmark,
+  Check,
+  Copy,
+  MessageSquare,
+} from "lucide-react";
 
 const SkillCard = ({
   authorEmail,
@@ -78,6 +85,32 @@ const SkillCard = ({
             ) : (
               <Copy className="w-4 h-4 text-zinc-400 group-hover:text-white" />
             )}
+          </button>
+        </div>
+      </div>
+      <div className="footer">
+        <div className="stats">
+          <button type="button" className="upvote" disabled>
+            <ArrowBigUp size={16} fill="currentColor" />
+            <span>{tags.length}</span>
+          </button>
+          <div className="comments">
+            <MessageSquare size={14} />
+            <span>{authorEmail ? 1 : 0}</span>
+          </div>
+        </div>
+        <div className="actions">
+          <Link to="/skills" className="open" title={`Open ${title}`}>
+            <span>Open</span>
+            <ArrowUpRight size={14} />
+          </Link>
+          <button
+            type="button"
+            className="save"
+            aria-label="saved state"
+            disabled
+          >
+            <Bookmark size={16} />
           </button>
         </div>
       </div>

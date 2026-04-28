@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { usePostHog } from "@posthog/react";
+
 import {
   ArrowBigUp,
   ArrowUpRight,
@@ -18,6 +20,7 @@ const SkillCard = ({
   tags,
   title,
 }: SkillRecord) => {
+  const posthog = usePostHog();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -26,6 +29,11 @@ const SkillCard = ({
       setCopied(true);
       // Reset the icon after 2 seconds
       setTimeout(() => setCopied(false), 2000);
+      posthog.capture("copy_command_clicked", {
+        skill_title: title,
+        skill_category: category,
+        install_command: installCommand,
+      });
     } catch (err) {
       console.error("Failed to copy!", err);
     }
